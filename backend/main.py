@@ -613,7 +613,7 @@ A patient is taking or considering these medicines together:
 
 Patient Context: {body.user_context}
 
-{"Verified Database Info:\n" + chr(10).join(all_context) if all_context else ""}
+{"Verified Database Info:" + chr(10) + chr(10).join(all_context) if all_context else ""}
 
 Provide a DRUG INTERACTION ANALYSIS:
 
