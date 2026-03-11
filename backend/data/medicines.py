@@ -11,7 +11,7 @@ from typing import List, Optional, Dict, Any
 # ------------------------------------
 # Load CSV at module import (once)
 # ------------------------------------
-CSV_PATH = os.path.join(os.path.dirname(__file__), "indian_medicines_enriched.csv")
+CSV_PATH = os.path.join(os.path.dirname(__file__), "indian_medicines_enriched.csv.gz")
 
 _df: Optional[pd.DataFrame] = None
 
@@ -20,10 +20,15 @@ def _get_db() -> pd.DataFrame:
     """Lazy-load the CSV into memory. Cached after first call."""
     global _df
     if _df is None:
-        _df = pd.read_csv(CSV_PATH, dtype=str, na_values=[], keep_default_na=False)
-        _df.columns = _df.columns.str.strip()
-        # Normalize medicine_name for faster lookups
-        _df["_name_lower"] = _df["medicine_name"].str.lower().str.strip()
+        try:
+            _df = pd.read_csv(CSV_PATH, dtype=str, na_values=[], keep_default_na=False)
+            _df.columns = _df.columns.str.strip()
+            # Normalize medicine_name for faster lookups
+            _df["_name_lower"] = _df["medicine_name"].str.lower().str.strip()
+        except FileNotFoundError:
+            # Graceful fallback when CSV is ignored/missing in free cloud tier
+            print("WARNING: Medicine database CSV not found. Running in DB-less mode.")
+            _df = pd.DataFrame(columns=["medicine_name", "salt_composition", "drug_class", "primary_uses", "_name_lower"])
     return _df
 
 
