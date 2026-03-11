@@ -1,0 +1,52 @@
+# ── Node ─────────────────────────────────────────────────────────────────
+node_modules/
+dist/
+.vite/
+
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+
+# ── Environment / Secrets (NEVER commit real secrets) ─────────────────────
+backend/.env
+frontend/.env.local
+frontend/.env.production
+.env
+.env.local
+.env.*.local
+
+# ── Build Artifacts ────────────────────────────────────────────────────────
+frontend/dist/
+*.log
+
+# ── IDE ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── OS ────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ─────────────────────────────────────────────────────────────────
+*.log
+build_error*.log
+build_final.log
+build_result.log
+
+# ── Misc Skeleton Files ───────────────────────────────────────────────────
+*.skeleton
+*.snippet
+metadata.json
+backend/data/indian_medicines_enriched.csv

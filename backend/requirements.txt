@@ -1,0 +1,37 @@
+# MediChain SRM — Backend Dependencies (Pinned for Production)
+# Install: pip install -r requirements.txt
+
+# ── Web Framework ──────────────────────────────────────────────────────────
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+
+# ── Rate Limiting ──────────────────────────────────────────────────────────
+slowapi>=0.1.9
+
+# ── Data Validation ────────────────────────────────────────────────────────
+pydantic==2.6.1
+python-multipart==0.0.9
+
+# ── Environment ────────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+
+# ── AI Providers ──────────────────────────────────────────────────────────
+google-generativeai>=0.8.0
+
+# ── PDF Processing ────────────────────────────────────────────────────────
+pdfplumber>=0.10.0
+
+# ── HTTP Client (for Ollama) ───────────────────────────────────────────────
+httpx==0.26.0
+
+# ── Medicine Database ─────────────────────────────────────────────────────
+pandas>=2.1.0
+
+# ── Security & Crypto ─────────────────────────────────────────────────────
+passlib==1.7.4
+bcrypt==4.1.2
+pyjwt==2.8.0
+cryptography==42.0.2
+
+# ── Database (optional, for future auth persistence) ──────────────────────
+sqlalchemy==2.0.27
