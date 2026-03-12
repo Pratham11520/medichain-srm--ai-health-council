@@ -208,10 +208,10 @@ export const HealthTrackerPage: React.FC = () => {
 
                                 {/* Value Input */}
                                 <div className="space-y-3">
-                                    <div className="flex gap-2">
-                                        <input value={value1} onChange={e => setValue1(e.target.value)} type="number" placeholder={selectedType === 'bp' ? 'Systolic (e.g. 120)' : `Value (${VITALS_CONFIG[selectedType as keyof typeof VITALS_CONFIG].unit})`} className="flex-1 bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500/50 text-lg font-bold text-center" />
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <input value={value1} onChange={e => setValue1(e.target.value)} type="number" placeholder={selectedType === 'bp' ? 'Systolic (e.g. 120)' : `Value (${VITALS_CONFIG[selectedType as keyof typeof VITALS_CONFIG].unit})`} className={`bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500/50 text-lg font-bold text-center w-full ${selectedType !== 'bp' ? 'col-span-2' : ''}`} />
                                         {selectedType === 'bp' && (
-                                            <input value={value2} onChange={e => setValue2(e.target.value)} type="number" placeholder="Diastolic (e.g. 80)" className="flex-1 bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500/50 text-lg font-bold text-center" />
+                                            <input value={value2} onChange={e => setValue2(e.target.value)} type="number" placeholder="Diastolic (e.g. 80)" className="bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-pink-500/50 text-lg font-bold text-center w-full" />
                                         )}
                                     </div>
                                     <button onClick={addReading} className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-pink-500/20">
@@ -244,7 +244,7 @@ export const HealthTrackerPage: React.FC = () => {
                                     </div>
                                     <div className="text-right">
                                         <p className="text-white font-bold">{reading.value}{reading.value2 ? `/${reading.value2}` : ''} <span className="text-xs text-slate-500">{reading.unit}</span></p>
-                                        {reading.blockHash && <p className="text-[9px] text-teal-500 font-mono flex items-center gap-1 justify-end"><ShieldCheck size={8} />{reading.blockHash}</p>}
+                                        {reading.blockHash && <p className="text-[9px] text-sky-500 font-mono flex items-center gap-1 justify-end"><ShieldCheck size={8} />{reading.blockHash}</p>}
                                     </div>
                                     <button onClick={() => deleteReading(reading.id)} className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-500/20 text-slate-500 hover:text-red-400 transition-all">
                                         <Trash2 size={14} />

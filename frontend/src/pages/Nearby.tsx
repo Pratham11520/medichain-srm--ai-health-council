@@ -204,11 +204,11 @@ export const NearbyPage: React.FC<NearbyProps> = ({ user }) => {
 
                 {/* Header */}
                 <div className="relative rounded-3xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 via-teal-600/10 to-blue-600/20" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 via-sky-600/10 to-blue-600/20" />
                     <div className="relative p-8 flex items-start justify-between">
                         <div>
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center shadow-lg shadow-green-500/25">
+                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-green-500 to-sky-600 flex items-center justify-center shadow-lg shadow-green-500/25">
                                     <MapPin className="text-white" size={24} />
                                 </div>
                                 <div>

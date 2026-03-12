@@ -80,14 +80,23 @@ export const authWithGoogle = async (idToken: string): Promise<{
     return data;
 };
 
-export const authWithEmail = async (email: string, name: string = ''): Promise<{
+export const requestEmailOTP = async (email: string): Promise<{ status: string; message: string }> => {
+    const response = await fetch(`${API_URL}/api/auth/request-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+    });
+    return handleResponse<{ status: string; message: string }>(response);
+};
+
+export const verifyEmailOTP = async (email: string, otp: string, name: string = ''): Promise<{
     token: string;
     user: { email: string; name: string };
 }> => {
-    const response = await fetch(`${API_URL}/api/auth/email-login`, {
+    const response = await fetch(`${API_URL}/api/auth/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name })
+        body: JSON.stringify({ email, otp, name })
     });
     const data = await handleResponse<{ token: string; user: any; status: string }>(response);
     setAuthToken(data.token);

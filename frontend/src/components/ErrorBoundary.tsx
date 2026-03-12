@@ -51,7 +51,7 @@ export class ErrorBoundary extends Component<Props, State> {
                                     window.location.hash = '/';
                                     window.location.reload();
                                 }}
-                                className="px-6 py-3 bg-teal-500 hover:bg-teal-400 text-white rounded-xl font-medium transition-colors"
+                                className="px-6 py-3 bg-sky-500 hover:bg-sky-400 text-white rounded-xl font-medium transition-colors"
                             >
                                 Reload App
                             </button>

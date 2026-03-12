@@ -183,7 +183,7 @@ export const PillReminderPage: React.FC = () => {
                                                         <p className="text-[11px] text-slate-500">{schedule.dosage}</p>
                                                     </div>
                                                     {schedule.blockHash && (
-                                                        <span className="text-[9px] text-teal-500 font-mono flex items-center gap-0.5"><ShieldCheck size={8} />{schedule.blockHash}</span>
+                                                        <span className="text-[9px] text-sky-500 font-mono flex items-center gap-0.5"><ShieldCheck size={8} />{schedule.blockHash}</span>
                                                     )}
                                                 </div>
                                             );
@@ -218,7 +218,7 @@ export const PillReminderPage: React.FC = () => {
                                         {schedule.notes && <p className="text-slate-600 text-[10px] mt-0.5">📝 {schedule.notes}</p>}
                                     </div>
                                     {schedule.blockHash && (
-                                        <span className="text-[9px] text-teal-500 font-mono flex items-center gap-0.5"><ShieldCheck size={8} />{schedule.blockHash}</span>
+                                        <span className="text-[9px] text-sky-500 font-mono flex items-center gap-0.5"><ShieldCheck size={8} />{schedule.blockHash}</span>
                                     )}
                                     <button onClick={() => deleteSchedule(schedule.id)} className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-500/20 text-slate-500 hover:text-red-400 transition-all">
                                         <Trash2 size={14} />

@@ -4,7 +4,7 @@ import { UserProfile } from '../types';
 import { saveUserProfile } from '../services/storageService';
 import { secureStorage } from '../services/blockchainService';
 import { getLocation } from '../services/locationService';
-import { MapPin, ChevronRight, ChevronLeft, Ruler, Weight, User, Loader2, CheckCircle } from 'lucide-react';
+import { MapPin, ChevronRight, ChevronLeft, Ruler, Weight, User, Mail, Loader2, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimatedPage } from '../components/AnimatedPage';
 import { toast } from 'sonner';
@@ -96,7 +96,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
       <div className="min-h-screen bg-[var(--primary)] flex items-center justify-center p-4 relative overflow-hidden">
         {/* Background */}
         <div className="fixed inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-teal-600/10 rounded-full blur-[100px]" />
+          <div className="absolute top-0 left-0 w-96 h-96 bg-sky-600/10 rounded-full blur-[100px]" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px]" />
         </div>
 
@@ -106,17 +106,17 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
             <div className="flex items-center justify-between mb-3">
               {STEPS.map((label, i) => (
                 <div key={i} className="flex items-center gap-1">
-                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${i + 1 < step ? 'bg-teal-500 text-white' :
-                      i + 1 === step ? 'bg-teal-500/20 border-2 border-teal-500 text-teal-400' :
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all ${i + 1 < step ? 'bg-sky-500 text-white' :
+                      i + 1 === step ? 'bg-sky-500/20 border-2 border-sky-500 text-sky-400' :
                         'bg-white/5 border border-white/10 text-slate-600'
                     }`}>
                     {i + 1 < step ? <CheckCircle size={14} /> : i + 1}
                   </div>
-                  <span className={`text-xs hidden sm:inline ${i + 1 === step ? 'text-teal-400 font-medium' : 'text-slate-600'}`}>
+                  <span className={`text-xs hidden sm:inline ${i + 1 === step ? 'text-sky-400 font-medium' : 'text-slate-600'}`}>
                     {label}
                   </span>
                   {i < STEPS.length - 1 && (
-                    <div className={`h-px flex-1 mx-2 ${i + 1 < step ? 'bg-teal-500' : 'bg-white/10'}`} style={{ width: 40 }} />
+                    <div className={`h-px flex-1 mx-2 ${i + 1 < step ? 'bg-sky-500' : 'bg-white/10'}`} style={{ width: 40 }} />
                   )}
                 </div>
               ))}
@@ -134,11 +134,11 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
             >
               {/* Step 1 — Profile */}
               {step === 1 && (
-                <div className="space-y-5">
-                  <div>
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ staggerChildren: 0.1 }} className="space-y-5">
+                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
                     <h2 className="text-2xl font-bold text-white">Your Basic Details</h2>
                     <p className="text-slate-400 text-sm mt-1">This personalizes your AI health advice.</p>
-                  </div>
+                  </motion.div>
                   {profile.picture && (
                     <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5">
                       <img src={profile.picture} alt={profile.name} className="w-10 h-10 rounded-full" />
@@ -151,7 +151,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
                       <User className="absolute left-4 top-3.5 text-slate-500" size={16} />
                       <input
                         type="text"
-                        className="input-field pl-10 w-full"
+                        className="input-field !pl-11 w-full"
                         placeholder="e.g. Pratham Nagpal"
                         value={profile.name}
                         onChange={e => setProfile({ ...profile, name: e.target.value })}
@@ -159,16 +159,19 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
                     </div>
                   </div>
                   {!profile.picture && (
-                    <div>
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                       <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Email Address</label>
-                      <input
-                        type="email"
-                        className="input-field w-full"
-                        placeholder="your@email.com"
-                        value={profile.email}
-                        onChange={e => setProfile({ ...profile, email: e.target.value })}
-                      />
-                    </div>
+                      <div className="relative">
+                        <Mail className="absolute left-4 top-3.5 text-slate-500" size={16} />
+                        <input
+                          type="email"
+                          className="input-field !pl-11 w-full"
+                          placeholder="your@email.com"
+                          value={profile.email}
+                          onChange={e => setProfile({ ...profile, email: e.target.value })}
+                        />
+                      </div>
+                    </motion.div>
                   )}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -194,76 +197,76 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
                       </select>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Step 2 — Body Metrics */}
               {step === 2 && (
-                <div className="space-y-5">
-                  <div>
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ staggerChildren: 0.1 }} className="space-y-5">
+                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
                     <h2 className="text-2xl font-bold text-white">Body Metrics</h2>
                     <p className="text-slate-400 text-sm mt-1">Used for BMI calculation and personalized dosing guidance.</p>
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Height (cm)</label>
                     <div className="relative">
                       <Ruler className="absolute left-4 top-3.5 text-slate-500" size={16} />
                       <input
                         type="number"
-                        className="input-field pl-10 w-full"
+                        className="input-field !pl-11 w-full"
                         min={50} max={250}
                         value={profile.height}
                         onChange={e => setProfile({ ...profile, height: Number(e.target.value) })}
                       />
                     </div>
                     <p className="text-xs text-slate-600 mt-1">e.g. 170 cm = 5'7"</p>
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                     <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Weight (kg)</label>
                     <div className="relative">
                       <Weight className="absolute left-4 top-3.5 text-slate-500" size={16} />
                       <input
                         type="number"
-                        className="input-field pl-10 w-full"
+                        className="input-field !pl-11 w-full"
                         min={1} max={500}
                         value={profile.weight}
                         onChange={e => setProfile({ ...profile, weight: Number(e.target.value) })}
                       />
                     </div>
-                  </div>
+                  </motion.div>
                   {profile.height > 50 && profile.weight > 0 && (
-                    <div className="p-3 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-between">
+                    <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="p-3 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-between">
                       <span className="text-sm text-slate-300">Your BMI</span>
                       <div className="text-right">
                         <span className="font-bold text-white">
                           {(profile.weight / ((profile.height / 100) ** 2)).toFixed(1)}
                         </span>
-                        <span className="text-xs text-teal-400 ml-2">
+                        <span className="text-xs text-sky-400 ml-2">
                           {(() => {
                             const b = profile.weight / ((profile.height / 100) ** 2);
                             return b < 18.5 ? 'Underweight' : b < 25 ? 'Normal ✓' : b < 30 ? 'Overweight' : 'Obese';
                           })()}
                         </span>
                       </div>
-                    </div>
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
               )}
 
               {/* Step 3 — Location */}
               {step === 3 && (
-                <div className="space-y-5">
-                  <div>
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ staggerChildren: 0.1 }} className="space-y-5">
+                  <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
                     <h2 className="text-2xl font-bold text-white">Your Location</h2>
                     <p className="text-slate-400 text-sm mt-1">
                       Used to find nearby pharmacies, hospitals, and doctors. Never shared with anyone.
                     </p>
-                  </div>
+                  </motion.div>
 
                   <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${profile.location.lat ? 'bg-teal-500/20 text-teal-400' : 'bg-white/5 text-slate-500'}`}>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${profile.location.lat ? 'bg-sky-500/20 text-sky-400' : 'bg-white/5 text-slate-500'}`}>
                           <MapPin size={20} />
                         </div>
                         <div>
@@ -280,7 +283,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
                       <button
                         onClick={detectLocation}
                         disabled={locationLoading}
-                        className="px-4 py-2 rounded-xl bg-teal-500/20 hover:bg-teal-500/30 text-teal-400 text-sm font-medium transition-colors"
+                        className="px-4 py-2 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 text-sky-400 text-sm font-medium transition-colors"
                       >
                         {locationLoading ? <Loader2 size={16} className="animate-spin" /> : 'Detect'}
                       </button>
@@ -292,7 +295,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Navigation */}
@@ -308,7 +311,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({ setUser }) => {
                 <button
                   onClick={handleNext}
                   disabled={loading}
-                  className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-bold shadow-lg shadow-teal-500/20 transition-all disabled:opacity-60"
+                  className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-400 hover:to-cyan-400 text-white font-bold shadow-lg shadow-sky-500/20 transition-all disabled:opacity-60"
                 >
                   {loading ? (
                     <><Loader2 size={18} className="animate-spin" /> Saving...</>

@@ -18,7 +18,7 @@ const TYPE_ROUTES: Record<string, string> = {
 
 const TYPE_COLORS: Record<string, string> = {
     report: 'text-blue-400',
-    chat: 'text-teal-400',
+    chat: 'text-sky-400',
     symptoms: 'text-purple-400',
     'drug-interaction': 'text-orange-400',
 };
@@ -108,7 +108,7 @@ export const TaskTray: React.FC = () => {
                         {/* Header */}
                         <div className="flex items-center justify-between px-4 py-3 border-b border-white/5">
                             <div className="flex items-center gap-2">
-                                <Zap size={14} className="text-teal-400" />
+                                <Zap size={14} className="text-sky-400" />
                                 <span className="text-xs font-bold text-white">Background Tasks</span>
                                 {runningCount > 0 && (
                                     <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300">

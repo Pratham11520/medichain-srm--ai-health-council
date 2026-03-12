@@ -63,8 +63,8 @@ function AnimatedRoutes() {
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+    <>
+      <Routes>
         {/* Public routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={
@@ -89,7 +89,7 @@ function AnimatedRoutes() {
         {/* Catch-all */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </AnimatePresence>
+    </>
   );
 }
 

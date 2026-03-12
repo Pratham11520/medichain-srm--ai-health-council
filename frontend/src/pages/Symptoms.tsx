@@ -61,7 +61,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
       <AnimatedPage>
         <div className="max-w-4xl mx-auto space-y-6">
           <button onClick={() => { setPhase('form'); setAnalysisResult(''); setVerifiedMeds([]); }}
-            className="flex items-center space-x-2 text-teal-400 hover:text-teal-300 transition-colors text-sm">
+            className="flex items-center space-x-2 text-sky-400 hover:text-teal-300 transition-colors text-sm">
             <ArrowLeft size={16} /><span>New Analysis</span>
           </button>
 
@@ -70,7 +70,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                className="w-20 h-20 rounded-full border-4 border-teal-500/30 border-t-teal-500"
+                className="w-20 h-20 rounded-full border-4 border-sky-500/30 border-t-sky-500"
               />
               <p className="text-slate-400">AI Council is analyzing your symptoms...</p>
               <p className="text-xs text-slate-600 font-mono">Connecting to Python Backend...</p>
@@ -79,13 +79,13 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <div className="glass-card p-6 md:p-8 rounded-2xl mb-6">
                 <div className="flex items-center space-x-2 mb-4">
-                  <Stethoscope size={20} className="text-teal-400" />
+                  <Stethoscope size={20} className="text-sky-400" />
                   <h3 className="text-xl font-bold text-white">AI Symptom Analysis</h3>
                 </div>
                 <div className="prose-medichain max-w-none">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}
                     components={{
-                      a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" className="text-teal-400 underline" />
+                      a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" className="text-sky-400 underline" />
                     }}
                   >{analysisResult}</ReactMarkdown>
                 </div>
@@ -94,7 +94,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
               {/* ... (Existing logic for verified meds & protocols) ... */}
               {verifiedMeds.length > 0 && (
                 <div>
-                  <div className="flex items-center space-x-2 mb-3 text-sm text-teal-400">
+                  <div className="flex items-center space-x-2 mb-3 text-sm text-sky-400">
                     <ShieldCheck size={16} /><span className="font-bold">Verified Medications ({verifiedMeds.length})</span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -109,7 +109,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
                         <div className="flex justify-between items-start mb-2">
                           <div>
                             <h4 className="font-bold text-white text-sm">{med.brandName}</h4>
-                            <p className="text-xs text-teal-400">{med.genericName}</p>
+                            <p className="text-xs text-sky-400">{med.genericName}</p>
                           </div>
                           <span className="text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full border border-green-500/30">✓</span>
                         </div>
@@ -117,7 +117,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
                         <div className="flex space-x-2">
                           {med.buyLinks.map((link, j) => (
                             <a key={j} href={link.url} target="_blank" rel="noreferrer"
-                              className="text-[10px] bg-[var(--surface)] text-teal-400 px-2 py-1 rounded-md hover:bg-teal-500/10 border border-[var(--border)] flex items-center space-x-1">
+                              className="text-[10px] bg-[var(--surface)] text-sky-400 px-2 py-1 rounded-md hover:bg-sky-500/10 border border-[var(--border)] flex items-center space-x-1">
                               <span>{link.label}</span><ExternalLink size={8} />
                             </a>
                           ))}
@@ -143,7 +143,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl font-extrabold text-white flex items-center justify-center space-x-2"
           >
-            <Stethoscope className="text-teal-400" /><span>Symptom Analyzer</span>
+            <Stethoscope className="text-sky-400" /><span>Symptom Analyzer</span>
           </motion.h2>
           <p className="text-slate-400 text-sm mt-2">Select your symptoms using the interactive form below</p>
         </div>
@@ -176,7 +176,7 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {BODY_PARTS.map(bp => (
                   <button key={bp.id} onClick={() => setFormData({ ...formData, bodyPart: bp.id })}
-                    className={`chip text-left p-4 flex flex-col space-y-1 h-auto transition-all transform hover:scale-105 ${formData.bodyPart === bp.id ? 'active ring-2 ring-teal-500' : ''}`}>
+                    className={`chip text-left p-4 flex flex-col space-y-1 h-auto transition-all transform hover:scale-105 ${formData.bodyPart === bp.id ? 'active ring-2 ring-sky-500' : ''}`}>
                     <span className="text-2xl">{bp.icon}</span>
                     <span className="text-sm font-medium">{bp.label}</span>
                   </button>
@@ -205,10 +205,10 @@ export const SymptomsPage: React.FC<SymptomsProps> = ({ user }) => {
                 </div>
               </div>
               <div>
-                <p className="text-sm text-slate-400 mb-2">Intensity: <strong className="text-teal-400">{formData.intensity}/10</strong></p>
+                <p className="text-sm text-slate-400 mb-2">Intensity: <strong className="text-sky-400">{formData.intensity}/10</strong></p>
                 <input type="range" min="1" max="10" value={formData.intensity}
                   onChange={e => setFormData({ ...formData, intensity: e.target.value })}
-                  className="w-full h-2 bg-[var(--surface)] rounded-full appearance-none cursor-pointer accent-teal-500" />
+                  className="w-full h-2 bg-[var(--surface)] rounded-full appearance-none cursor-pointer accent-sky-500" />
               </div>
               <div>
                 <p className="text-sm text-slate-400 mb-3">Duration</p>

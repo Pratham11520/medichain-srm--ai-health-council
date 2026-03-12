@@ -1,5 +1,5 @@
 """
-MediChain SRM API — FastAPI Backend (Production v5.0)
+MediChain API — FastAPI Backend (Production v5.0)
 Parallel LLM Consensus: Gemini + OpenRouter (parallel) → Ollama → HuggingFace → Fallback
 254,000+ Indian Medicine Database | OpenFDA enrichment | Rate-Limited | Health-Checked
 Blockchain-audited — every API call is logged into a tamper-evident hash chain.
@@ -18,6 +18,8 @@ import os
 import re
 import time
 import uuid
+import secrets
+from datetime import datetime, timedelta
 import logging
 import io
 from dotenv import load_dotenv
@@ -30,6 +32,7 @@ from user_store import (
     delete_user_data, get_storage_stats,
 )
 from services.blockchain import secure_ledger
+from services.email_service import send_otp_email
 
 load_dotenv()
 
@@ -52,7 +55,7 @@ limiter = Limiter(key_func=get_remote_address)
 # App Setup
 # ========================
 app = FastAPI(
-    title="MediChain SRM API",
+    title="MediChain API",
     description="AI-Powered Indian Medical Assistant — Multi-LLM Council with 254k+ Medicine Database & Blockchain Audit",
     version="4.0.0",
     docs_url="/docs",
@@ -96,7 +99,7 @@ async def add_request_id(request: Request, call_next):
 # ========================
 # System Prompt
 # ========================
-SYSTEM_PROMPT = """You are MediBot, the AI Medical Council assistant for MediChain SRM — an Indian health platform.
+SYSTEM_PROMPT = """You are MediBot, the AI Medical Council assistant for MediChain — an Indian health platform.
 You are powered by a verified database of 254,000+ Indian medicines and enriched with OpenFDA drug data.
 All responses are blockchain-audited for tamper-evident medical record integrity.
 
@@ -177,7 +180,7 @@ async def health_check():
     return {
         "status": "ok",
         "version": "4.0.0",
-        "service": "MediChain SRM API",
+        "service": "MediChain API",
         "blockchain_blocks": len(secure_ledger.chain),
         "blockchain_valid": secure_ledger.is_valid(),
         "timestamp": int(time.time()),
@@ -187,7 +190,7 @@ async def health_check():
 @app.get("/", tags=["System"])
 async def root():
     return {
-        "message": "🏥 MediChain SRM API v4.0 — AI Health Council (Blockchain-Audited)",
+        "message": "🏥 MediChain API v4.0 — AI Health Council (Blockchain-Audited)",
         "docs": "/docs",
         "health": "/health",
         "blockchain": "/api/blockchain/status",
@@ -729,8 +732,15 @@ async def medicine_stats():
 class GoogleAuthRequest(BaseModel):
     id_token: str
 
-class EmailLoginRequest(BaseModel):
+# In-memory OTP store: { "user@email.com": {"otp": "123456", "expires": datetime, "attempts": 0} }
+otp_store = {}
+
+class OTPRequest(BaseModel):
     email: str
+
+class OTPVerifyRequest(BaseModel):
+    email: str
+    otp: str
     name: str = ""
 
 class UserDataSaveRequest(BaseModel):
@@ -759,21 +769,69 @@ async def auth_google(body: GoogleAuthRequest):
     }
 
 
-@app.post("/api/auth/email-login", tags=["Auth"])
-async def auth_email(body: EmailLoginRequest):
-    """Simple email-based login (for demo/dev). Issues JWT without OTP verification."""
-    if not body.email or '@' not in body.email:
-        raise HTTPException(status_code=422, detail="Invalid email")
-
-    token = create_jwt(body.email, body.name or body.email.split('@')[0])
+@app.post("/api/auth/request-otp", tags=["Auth"])
+async def request_otp(body: OTPRequest):
+    """Generate and send a 6-digit OTP to the user's email."""
+    email = body.email.strip().lower()
+    if not email or '@' not in email:
+        raise HTTPException(status_code=422, detail="Invalid email address")
+    
+    otp = "".join([str(secrets.randbelow(10)) for _ in range(6)])
+    
     try:
-        secure_ledger.add_block(f"AUTH:EMAIL:{body.email[:20]}:{int(time.time())}")
+        await send_otp_email(email, otp)
+    except Exception as e:
+        logger.error(f"OTP send failed: {e}")
+        raise HTTPException(status_code=500, detail="Failed to send email. Check server configuration.")
+    
+    otp_store[email] = {
+        "otp": otp,
+        "expires": datetime.now() + timedelta(minutes=5),
+        "attempts": 0
+    }
+    
+    try:
+        secure_ledger.add_block(f"AUTH:OTP_REQ:{email[:20]}:{int(time.time())}")
+    except Exception:
+        pass
+
+    return {"status": "success", "message": "OTP sent"}
+
+
+@app.post("/api/auth/verify-otp", tags=["Auth"])
+async def verify_otp(body: OTPVerifyRequest):
+    """Verify the 6-digit OTP and issue a JWT session token."""
+    email = body.email.strip().lower()
+    otp_input = body.otp.strip()
+    
+    record = otp_store.get(email)
+    if not record:
+        raise HTTPException(status_code=400, detail="No OTP requested or OTP expired")
+    
+    if datetime.now() > record["expires"]:
+        del otp_store[email]
+        raise HTTPException(status_code=400, detail="OTP has expired. Please request a new one.")
+        
+    if record["attempts"] >= 3:
+        del otp_store[email]
+        raise HTTPException(status_code=400, detail="Too many failed attempts. Please request a new OTP.")
+        
+    if record["otp"] != otp_input:
+        record["attempts"] += 1
+        raise HTTPException(status_code=400, detail="Invalid OTP code")
+        
+    # Valid OTP
+    del otp_store[email]
+    
+    token = create_jwt(email, body.name or email.split('@')[0])
+    try:
+        secure_ledger.add_block(f"AUTH:OTP_VERIFY:{email[:20]}:{int(time.time())}")
     except Exception:
         pass
 
     return {
         "token": token,
-        "user": {"email": body.email, "name": body.name or body.email.split('@')[0]},
+        "user": {"email": email, "name": body.name or email.split('@')[0]},
         "status": "authenticated",
     }
 

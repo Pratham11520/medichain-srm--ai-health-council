@@ -279,8 +279,8 @@ async def _try_openrouter(prompt: str) -> Optional[str]:
                 "https://openrouter.ai/api/v1/chat/completions",
                 headers={
                     "Authorization": f"Bearer {api_key}",
-                    "HTTP-Referer": "https://medichain-srm.vercel.app",
-                    "X-Title": "MediChain SRM",
+                    "HTTP-Referer": "https://medichain.vercel.app",
+                    "X-Title": "MediChain",
                     "Content-Type": "application/json",
                 },
                 json={

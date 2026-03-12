@@ -1,7 +1,7 @@
 // ==========================================
 // Hindi-English i18n Service
 // Lightweight internationalization for
-// MediChain SRM — India-first health app
+// MediChain — India-first health app
 // ==========================================
 
 export type Language = 'en' | 'hi';

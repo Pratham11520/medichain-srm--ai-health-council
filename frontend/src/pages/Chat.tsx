@@ -283,7 +283,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
       // Header
       doc.setFontSize(20);
       doc.setTextColor(0, 128, 128);
-      doc.text('MediChain SRM', pageWidth / 2, y, { align: 'center' });
+      doc.text('MediChain', pageWidth / 2, y, { align: 'center' });
       y += 8;
       doc.setFontSize(10);
       doc.setTextColor(100);
@@ -373,7 +373,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
     const lastAI = [...messages].reverse().find(m => m.role === 'model');
     if (!lastAI) return;
 
-    const shareText = `🏥 *MediChain AI Consultation*\n\n${lastAI.text.slice(0, 800)}\n\n⚕️ _Powered by MediChain SRM — AI Health Council_\n🔗 Verify medicines: 1mg.com | apollopharmacy.in`;
+    const shareText = `🏥 *MediChain AI Consultation*\n\n${lastAI.text.slice(0, 800)}\n\n⚕️ _Powered by MediChain — AI Health Council_\n🔗 Verify medicines: 1mg.com | apollopharmacy.in`;
 
     // Try WhatsApp first (most popular in India)
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
@@ -397,7 +397,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
             >
               <div className="p-4 border-b border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <History size={16} className="text-teal-400" />
+                  <History size={16} className="text-sky-400" />
                   <h3 className="text-sm font-bold text-white">My Consultations</h3>
                 </div>
                 <button
@@ -422,7 +422,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                       animate={{ opacity: 1 }}
                       onClick={() => loadSession(session)}
                       className={`p-3 rounded-xl cursor-pointer transition-all group ${session.id === currentSessionId
-                        ? 'bg-teal-500/10 border border-teal-500/20'
+                        ? 'bg-sky-500/10 border border-sky-500/20'
                         : 'bg-white/[0.02] hover:bg-white/[0.05] border border-transparent'
                         }`}
                     >
@@ -464,13 +464,13 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowHistory(!showHistory)}
-                className={`p-2 rounded-lg transition-all ${showHistory ? 'bg-teal-500/20 text-teal-400' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}
+                className={`p-2 rounded-lg transition-all ${showHistory ? 'bg-sky-500/20 text-sky-400' : 'bg-white/5 text-slate-400 hover:bg-white/10'}`}
                 title="My Consultations"
               >
                 <History size={16} />
               </button>
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-teal-500/20">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center shadow-lg shadow-sky-500/20">
                   <Bot size={20} className="text-white" />
                 </div>
                 <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#0d1220]" />
@@ -506,7 +506,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
               <button
                 onClick={() => setShowMedPanel(!showMedPanel)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${showMedPanel
-                  ? 'bg-teal-500 text-white shadow-lg shadow-teal-500/20'
+                  ? 'bg-sky-500 text-white shadow-lg shadow-sky-500/20'
                   : 'bg-white/5 text-slate-400 hover:bg-white/10 border border-white/10'
                   }`}
               >
@@ -541,12 +541,12 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                       onChange={e => setMedSearch(e.target.value)}
                       onKeyDown={e => e.key === 'Enter' && handleMedSearch()}
                       placeholder="Search medicine, salt, or condition..."
-                      className="flex-1 bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-teal-500/50"
+                      className="flex-1 bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-sky-500/50"
                     />
                     <button
                       onClick={handleMedSearch}
                       disabled={medLoading}
-                      className="px-4 py-2 bg-teal-500 hover:bg-teal-400 rounded-xl text-white text-sm transition-colors disabled:opacity-50"
+                      className="px-4 py-2 bg-sky-500 hover:bg-sky-400 rounded-xl text-white text-sm transition-colors disabled:opacity-50"
                     >
                       {medLoading ? <Loader2 size={15} className="animate-spin" /> : <Search size={15} />}
                     </button>
@@ -562,7 +562,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                           transition={{ delay: i * 0.04 }}
                           onClick={() => setSelectedMed(selectedMed?.medicine_name === med.medicine_name ? null : med)}
                           className={`p-3 rounded-xl cursor-pointer transition-all ${selectedMed?.medicine_name === med.medicine_name
-                            ? 'bg-teal-500/20 border border-teal-500/40'
+                            ? 'bg-sky-500/20 border border-sky-500/40'
                             : 'bg-white/5 border border-white/5 hover:border-white/15'
                             }`}
                         >
@@ -571,7 +571,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                               <ShieldCheck size={13} className="text-green-400" />
                               <span className="text-white font-medium text-xs">{med.medicine_name}</span>
                             </div>
-                            <span className="text-xs text-teal-400 font-mono">₹{med.price_inr}</span>
+                            <span className="text-xs text-sky-400 font-mono">₹{med.price_inr}</span>
                           </div>
                           <p className="text-[11px] text-slate-400 mt-0.5 truncate">
                             Salt: {med.salt_composition} • {med.dosage_form}
@@ -615,8 +615,8 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
             {messages.length === 0 && (
               <div className="h-full flex flex-col items-center justify-center gap-6 py-8">
                 <div className="text-center">
-                  <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-teal-500/20 to-cyan-500/10 border border-teal-500/20 flex items-center justify-center mx-auto mb-4">
-                    <Sparkles size={36} className="text-teal-400" />
+                  <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-sky-500/20 to-blue-500/10 border border-sky-500/20 flex items-center justify-center mx-auto mb-4">
+                    <Sparkles size={36} className="text-sky-400" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-1">Ask MediBot Anything</h3>
                   <p className="text-slate-400 text-sm">Backed by 254,000+ verified Indian medicines • Blockchain secured</p>
@@ -631,7 +631,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.08 }}
                       onClick={() => sendMessage(qp.text)}
-                      className="flex items-center gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-teal-500/30 text-left transition-all group"
+                      className="flex items-center gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-sky-500/30 text-left transition-all group"
                     >
                       <span className="text-xl">{qp.icon}</span>
                       <span className="text-xs text-slate-300 group-hover:text-white transition-colors">{qp.text}</span>
@@ -652,7 +652,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                 >
                   {/* Avatar */}
                   <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-bold self-end ${msg.role === 'user'
-                    ? 'bg-gradient-to-br from-teal-500 to-cyan-600'
+                    ? 'bg-gradient-to-br from-sky-500 to-blue-600'
                     : 'bg-gradient-to-br from-slate-700 to-slate-600 border border-white/10'
                     }`}>
                     {msg.role === 'user' ? user.name.charAt(0).toUpperCase() : <Bot size={14} />}
@@ -661,7 +661,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                   {/* Bubble */}
                   <div className={`relative group max-w-[78%] md:max-w-[68%] ${msg.role === 'user' ? 'items-end' : 'items-start'} flex flex-col`}>
                     <div className={`px-4 py-3 rounded-2xl shadow-lg ${msg.role === 'user'
-                      ? 'bg-gradient-to-br from-teal-600 to-teal-500 text-white rounded-br-sm'
+                      ? 'bg-gradient-to-br from-sky-600 to-sky-500 text-white rounded-br-sm'
                       : 'bg-[#151b2d] border border-white/[0.07] text-slate-200 rounded-bl-sm'
                       }`}>
                       {msg.role === 'model' ? (
@@ -704,9 +704,9 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                             title={speakingId === msg.id ? 'Stop reading' : `Read aloud (${chatLang === 'hi' ? 'हिंदी' : 'English'})`}
                           >
                             {speakingId === msg.id ? (
-                              <VolumeX size={11} className="text-teal-400 animate-pulse" />
+                              <VolumeX size={11} className="text-sky-400 animate-pulse" />
                             ) : (
-                              <Volume2 size={11} className="text-slate-600 hover:text-teal-400" />
+                              <Volume2 size={11} className="text-slate-600 hover:text-sky-400" />
                             )}
                           </button>
                         </>
@@ -769,7 +769,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                       {[0, 1, 2].map(i => (
                         <div
                           key={i}
-                          className="w-2 h-2 rounded-full bg-teal-400 animate-bounce"
+                          className="w-2 h-2 rounded-full bg-sky-400 animate-bounce"
                           style={{ animationDelay: `${i * 0.15}s` }}
                         />
                       ))}
@@ -790,7 +790,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 onClick={scrollToBottom}
-                className="absolute bottom-24 right-6 w-9 h-9 rounded-full bg-teal-500 shadow-lg shadow-teal-500/30 flex items-center justify-center text-white z-10"
+                className="absolute bottom-24 right-6 w-9 h-9 rounded-full bg-sky-500 shadow-lg shadow-sky-500/30 flex items-center justify-center text-white z-10"
               >
                 <ChevronDown size={18} />
               </motion.button>
@@ -808,7 +808,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
                   onKeyDown={handleKeyDown}
                   rows={1}
                   placeholder="Type your health question... (Shift+Enter for new line)"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 pr-12 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-teal-500/40 focus:ring-1 focus:ring-teal-500/20 resize-none min-h-[46px] max-h-32 overflow-y-auto custom-scrollbar transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 pr-12 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-sky-500/40 focus:ring-1 focus:ring-sky-500/20 resize-none min-h-[46px] max-h-32 overflow-y-auto custom-scrollbar transition-all"
                   style={{ height: 'auto' }}
                   onInput={(e) => {
                     const t = e.currentTarget;
@@ -894,7 +894,7 @@ export const ChatPage: React.FC<ChatProps> = ({ user }) => {
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || loading || input.length > 2000}
-                className="w-11 h-11 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 hover:from-teal-400 hover:to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-teal-500/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
+                className="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 flex items-center justify-center text-white shadow-lg shadow-sky-500/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
               >
                 {loading
                   ? <Loader2 size={18} className="animate-spin" />

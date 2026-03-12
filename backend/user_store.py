@@ -31,7 +31,7 @@ USER_DATA_DIR = Path(__file__).parent / "user_data"
 USER_DATA_DIR.mkdir(exist_ok=True)
 
 # JWT secret — in production use env var
-JWT_SECRET = os.getenv("JWT_SECRET", "medichain-srm-jwt-secret-2024-industry-grade")
+JWT_SECRET = os.getenv("JWT_SECRET", "medichain-jwt-secret-2024-industry-grade")
 JWT_EXPIRY = 7 * 24 * 3600  # 7 days
 
 

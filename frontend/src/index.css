@@ -7,43 +7,98 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- CSS Custom Properties --- */
+/* --- CSS Custom Properties (Sexy Modern Blue/Black) --- */
 :root {
-  --primary: #0a0f1e;
-  --primary-light: #0f172a;
-  --secondary: #131c31;
-  --surface: #1a2540;
-  --surface-light: #243352;
-  --accent: #0d9488;
-  --accent-light: #14b8a6;
-  --accent-glow: rgba(13, 148, 136, 0.3);
-  --accent-hover: #115e59;
-  --blue: #3b82f6;
-  --blue-glow: rgba(59, 130, 246, 0.2);
-  --purple: #8b5cf6;
-  --purple-glow: rgba(139, 92, 246, 0.2);
-  --pink: #ec4899;
+  --primary: #000000;
+  --primary-light: #05050a;
+  --secondary: #0a0a0f;
+  --surface: #0f111a;
+  --surface-light: #151822;
+  --accent: #0ea5e9;       /* Light Blue / Sky */
+  --accent-light: #38bdf8;
+  --accent-glow: rgba(14, 165, 233, 0.35);
+  --accent-hover: #0284c7;
+  --blue: #3b82f6;         /* Deep Blue */
+  --blue-glow: rgba(59, 130, 246, 0.25);
+  --purple: #6366f1;       /* Indigo replacement */
+  --purple-glow: rgba(99, 102, 241, 0.2);
+  --pink: #8b5cf6;         /* Violet replacement */
   --amber: #f59e0b;
   --red: #ef4444;
-  --green: #22c55e;
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
+  --green: #10b981;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
   --text-muted: #64748b;
   --border: #1e293b;
   --border-light: #334155;
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(148, 163, 184, 0.1);
+  --glass-bg: rgba(5, 5, 10, 0.6);
+  --glass-border: rgba(56, 189, 248, 0.1);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.8);
   --shadow-glow: 0 0 30px var(--accent-glow);
   --font-main: 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;
 }
+
+/* --- Light Mode Overrides --- */
+.light-mode {
+  --primary: #f8fafc;
+  --primary-light: #f1f5f9;
+  --secondary: #e2e8f0;
+  --surface: #ffffff;
+  --surface-light: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border: #cbd5e1;
+  --border-light: #e2e8f0;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(14, 165, 233, 0.15);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.light-mode .glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.7) 100%);
+  border-color: rgba(14, 165, 233, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .glass-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 0.9) 100%);
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 20px rgba(14, 165, 233, 0.1);
+}
+
+/* Tailwind Hardcoded Utilities Overrides */
+.light-mode .text-white { color: var(--text-primary) !important; }
+.light-mode .text-slate-300 { color: var(--text-secondary) !important; }
+.light-mode .text-slate-400 { color: var(--text-muted) !important; }
+.light-mode .text-slate-500 { color: #475569 !important; }
+.light-mode .text-slate-600 { color: #64748b !important; }
+
+/* Gradient Overrides for Landing Page Text */
+.light-mode .from-white { --tw-gradient-from: #0f172a var(--tw-gradient-from-position) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+.light-mode .to-white\/50 { --tw-gradient-to: rgba(15, 23, 42, 0.6) var(--tw-gradient-to-position) !important; }
+
+.light-mode .bg-\[\#0a0e1a\] { background-color: var(--primary-light) !important; }
+.light-mode .bg-\[\#1a1f2e\] { background-color: var(--surface) !important; }
+.light-mode .bg-black { background-color: #f1f5f9 !important; }
+.light-mode .bg-black\/30 { background-color: rgba(241, 245, 249, 0.8) !important; }
+.light-mode .bg-black\/40 { background-color: rgba(241, 245, 249, 0.9) !important; }
+.light-mode .bg-black\/50 { background-color: rgba(255, 255, 255, 0.6) !important; }
+.light-mode .border-white\/5 { border-color: var(--border-light) !important; }
+.light-mode .border-white\/10 { border-color: var(--border) !important; }
+.light-mode .bg-white\/5 { background-color: rgba(0,0,0,0.04) !important; }
+.light-mode .hover\:bg-white\/5:hover { background-color: rgba(0,0,0,0.06) !important; }
+.light-mode .bg-slate-800\/50 { background-color: rgba(0,0,0,0.05) !important; }
+.light-mode .bg-slate-900\/50 { background-color: rgba(0,0,0,0.03) !important; }
 
 /* --- Base Reset & Globals --- */
 *,
@@ -58,6 +113,16 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove number spinners from inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 body {
@@ -101,23 +166,23 @@ body {
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(26, 37, 64, 0.8) 0%, rgba(19, 28, 49, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(15, 17, 26, 0.8) 0%, rgba(5, 5, 10, 0.6) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.1);
   border-radius: var(--radius-lg);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(13, 148, 136, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(13, 148, 136, 0.08);
+  border-color: rgba(14, 165, 233, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(14, 165, 233, 0.15);
   transform: translateY(-2px);
 }
 
 /* --- Gradient Utilities --- */
 .gradient-text {
-  background: linear-gradient(135deg, #14b8a6, #3b82f6, #8b5cf6);
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -142,12 +207,12 @@ body {
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, rgba(13, 148, 136, 0.15) 0%, rgba(59, 130, 246, 0.1) 50%, rgba(139, 92, 246, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(59, 130, 246, 0.1) 50%, rgba(99, 102, 241, 0.1) 100%);
 }
 
 /* --- Button Styles --- */
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent) 0%, #0f766e 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #0284c7 100%);
   color: white;
   font-weight: 600;
   padding: 12px 28px;
@@ -256,7 +321,7 @@ body {
 }
 
 .chip.active {
-  background: linear-gradient(135deg, var(--accent), #0f766e);
+  background: linear-gradient(135deg, var(--accent), #0284c7);
   border-color: var(--accent);
   color: white;
   box-shadow: 0 2px 12px var(--accent-glow);
@@ -301,8 +366,8 @@ body {
 
 /* --- Medication Card --- */
 .med-card {
-  background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(59, 130, 246, 0.05));
-  border: 1px solid rgba(13, 148, 136, 0.2);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08), rgba(59, 130, 246, 0.05));
+  border: 1px solid rgba(14, 165, 233, 0.2);
   border-radius: var(--radius-lg);
   padding: 16px;
   transition: all 0.3s ease;
@@ -310,7 +375,7 @@ body {
 
 .med-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(13, 148, 136, 0.1);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
 }
 
 /* --- Severity Badge --- */
@@ -562,6 +627,9 @@ body {
   border-radius: var(--radius-md);
   overflow: hidden;
   background: rgba(10, 15, 30, 0.5);
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .prose-medichain th {
@@ -583,7 +651,7 @@ body {
 }
 
 .prose-medichain tr:hover td {
-  background: rgba(13, 148, 136, 0.05);
+  background: rgba(14, 165, 233, 0.1);
 }
 
 .prose-medichain ul,

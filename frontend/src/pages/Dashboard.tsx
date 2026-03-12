@@ -53,9 +53,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
       label: 'MediBot Chat',
       desc: 'Ask anything about health, medicines, or symptoms',
       icon: MessageSquare,
-      gradient: 'from-teal-500/20 to-cyan-500/10',
-      border: 'border-teal-500/20 hover:border-teal-500/40',
-      iconColor: 'text-teal-400',
+      gradient: 'from-sky-500/20 to-blue-500/10',
+      border: 'border-sky-500/20 hover:border-sky-500/40',
+      iconColor: 'text-sky-400',
       path: '/chat'
     },
     {
@@ -90,7 +90,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
       label: 'Nearby Pharmacies',
       desc: 'Find pharmacies, hospitals & clinics near you',
       icon: MapPin,
-      gradient: 'from-green-500/20 to-teal-500/10',
+      gradient: 'from-green-500/20 to-sky-500/10',
       border: 'border-green-500/20 hover:border-green-500/40',
       iconColor: 'text-green-400',
       path: '/nearby'
@@ -119,7 +119,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
           <div>
             <h1 className="text-3xl font-black text-white">
               Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 17 ? 'afternoon' : 'evening'},{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-400">
                 {user.name.split(' ')[0]}
               </span>
             </h1>
@@ -153,8 +153,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass rounded-2xl border border-teal-500/10 p-5">
-            <h3 className="text-sm font-bold text-teal-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="glass rounded-2xl border border-sky-500/10 p-5">
+            <h3 className="text-sm font-bold text-sky-400 uppercase tracking-wider mb-3 flex items-center gap-2">
               <Shield size={14} /> Blockchain Status
             </h3>
             <div className="space-y-2">
@@ -175,10 +175,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
         </div>
 
         {/* AI Health Score */}
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="glass rounded-2xl border border-teal-500/10 p-6">
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="glass rounded-2xl border border-sky-500/10 p-6">
           <div className="flex items-center justify-between">
             <div className="flex-1">
-              <h3 className="text-sm font-bold text-teal-400 uppercase tracking-wider mb-1 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-sky-400 uppercase tracking-wider mb-1 flex items-center gap-2">
                 <Activity size={14} /> AI Health Score
               </h3>
               <p className="text-xs text-slate-500 mb-4">Based on BMI, vitals & blockchain activity</p>
@@ -228,7 +228,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
                       )}
                       <p className="text-xs text-slate-500">{ledgerStats.chainLength} blockchain records</p>
                       <p className="text-[10px] text-slate-600 font-mono flex items-center gap-1">
-                        <TrendingUp size={10} className="text-teal-500" />
+                        <TrendingUp size={10} className="text-sky-500" />
                         Keep using MediChain to improve your score
                       </p>
                     </div>
@@ -325,7 +325,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
           {/* Medicine Database */}
           <motion.div variants={item} initial="hidden" animate="show" className="glass-card p-5 rounded-2xl">
             <div className="flex items-center gap-2 mb-3">
-              <Database size={16} className="text-teal-400" />
+              <Database size={16} className="text-sky-400" />
               <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Medicine Database</span>
             </div>
             <p className="text-2xl font-black text-white">
@@ -333,7 +333,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ user }) => {
             </p>
             <p className="text-xs text-slate-400 mt-1">Verified Indian medicines</p>
             <div className="mt-3 flex gap-2 flex-wrap">
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">
                 {medStats?.unique_drug_classes || '8'} drug classes
               </span>
               <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">

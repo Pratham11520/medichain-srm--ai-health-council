@@ -89,7 +89,7 @@ export const LedgerExplorerPage: React.FC = () => {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div>
                         <h1 className="text-3xl font-extrabold text-white flex items-center gap-3">
-                            <div className="p-2.5 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl shadow-lg shadow-teal-500/20">
+                            <div className="p-2.5 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl shadow-lg shadow-sky-500/20">
                                 <Shield size={24} className="text-white" />
                             </div>
                             Hash Ledger Explorer
@@ -103,7 +103,7 @@ export const LedgerExplorerPage: React.FC = () => {
                         <button
                             onClick={handleValidate}
                             disabled={validating}
-                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 text-white text-sm font-medium transition-all shadow-lg shadow-teal-500/20 disabled:opacity-50"
+                            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white text-sm font-medium transition-all shadow-lg shadow-sky-500/20 disabled:opacity-50"
                         >
                             {validating ? <Loader2 size={16} className="animate-spin" /> : <ShieldCheck size={16} />}
                             Validate Chain
@@ -164,7 +164,7 @@ export const LedgerExplorerPage: React.FC = () => {
                 {/* Stats Cards */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
-                        { label: 'Total Blocks', value: chain.length, icon: Database, color: 'from-teal-500 to-cyan-600' },
+                        { label: 'Total Blocks', value: chain.length, icon: Database, color: 'from-sky-500 to-blue-600' },
                         { label: 'Hash Algorithm', value: 'SHA-256', icon: Fingerprint, color: 'from-violet-500 to-purple-600' },
                         { label: 'Encryption', value: 'AES-256-GCM', icon: Lock, color: 'from-amber-500 to-orange-600' },
                         { label: 'Chain Status', value: isValid === null ? 'Unchecked' : isValid ? 'Valid ✓' : 'Broken ✗', icon: isValid === false ? ShieldAlert : ShieldCheck, color: isValid === false ? 'from-red-500 to-rose-600' : 'from-emerald-500 to-green-600' },
@@ -188,7 +188,7 @@ export const LedgerExplorerPage: React.FC = () => {
                 {/* How It Works */}
                 <div className="glass rounded-2xl border border-white/5 p-6">
                     <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <Eye size={18} className="text-teal-400" />
+                        <Eye size={18} className="text-sky-400" />
                         How the Hash Ledger Works
                     </h2>
                     <div className="grid md:grid-cols-3 gap-4">
@@ -198,7 +198,7 @@ export const LedgerExplorerPage: React.FC = () => {
                                 title: 'Data Entry',
                                 desc: 'Every action (chat, login, profile save) is captured as a record with a timestamp.',
                                 icon: Database,
-                                color: 'text-teal-400 bg-teal-500/10',
+                                color: 'text-sky-400 bg-sky-500/10',
                             },
                             {
                                 step: '2',
@@ -238,7 +238,7 @@ export const LedgerExplorerPage: React.FC = () => {
                 {/* Block Chain Visualization */}
                 <div>
                     <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <Link2 size={18} className="text-teal-400" />
+                        <Link2 size={18} className="text-sky-400" />
                         Live Block Chain ({chain.length} blocks)
                     </h2>
 
@@ -259,8 +259,8 @@ export const LedgerExplorerPage: React.FC = () => {
                                     {/* Chain link connector */}
                                     {index > 0 && (
                                         <div className="flex items-center gap-2 py-1 pl-8">
-                                            <div className="w-0.5 h-4 bg-gradient-to-b from-teal-500/50 to-teal-500/20" />
-                                            <span className="text-[10px] font-mono text-teal-500/50">
+                                            <div className="w-0.5 h-4 bg-gradient-to-b from-sky-500/50 to-sky-500/20" />
+                                            <span className="text-[10px] font-mono text-sky-500/50">
                                                 prev_hash: {block.previousHash.slice(0, 16)}...
                                             </span>
                                         </div>
@@ -270,7 +270,7 @@ export const LedgerExplorerPage: React.FC = () => {
                                         className={`glass rounded-2xl border transition-all cursor-pointer overflow-hidden ${isTampered
                                                 ? 'border-red-500/40 bg-red-500/5 ring-1 ring-red-500/20'
                                                 : isGenesis
-                                                    ? 'border-teal-500/20 bg-gradient-to-r from-teal-900/20 to-transparent'
+                                                    ? 'border-sky-500/20 bg-gradient-to-r from-sky-900/20 to-transparent'
                                                     : 'border-white/5 hover:border-white/10'
                                             }`}
                                         onClick={() => setExpandedBlock(isExpanded ? null : block.index)}
@@ -279,7 +279,7 @@ export const LedgerExplorerPage: React.FC = () => {
                                         <div className="p-4 flex items-center gap-4">
                                             {/* Block Index Badge */}
                                             <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg shrink-0 ${isGenesis
-                                                    ? 'bg-gradient-to-br from-teal-500 to-cyan-600 text-white shadow-lg shadow-teal-500/20'
+                                                    ? 'bg-gradient-to-br from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/20'
                                                     : isTampered
                                                         ? 'bg-red-500/20 text-red-400'
                                                         : 'bg-white/5 text-slate-300'
@@ -299,12 +299,12 @@ export const LedgerExplorerPage: React.FC = () => {
                                                         </span>
                                                     )}
                                                     {isGenesis && (
-                                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-400 font-medium border border-teal-500/20">
+                                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-400 font-medium border border-sky-500/20">
                                                             ORIGIN
                                                         </span>
                                                     )}
                                                 </div>
-                                                <p className="text-slate-500 text-xs font-mono truncate mt-1">
+                                                <p className="text-slate-500 text-xs font-mono break-all mt-1">
                                                     <Hash size={10} className="inline mr-1" />
                                                     {truncateHash(block.hash)}
                                                 </p>
@@ -336,7 +336,7 @@ export const LedgerExplorerPage: React.FC = () => {
                                                         {/* Hash Details Grid */}
                                                         <div className="grid md:grid-cols-2 gap-3">
                                                             <div className="bg-black/30 rounded-xl p-4">
-                                                                <p className="text-[10px] text-teal-400 uppercase tracking-wider mb-1 flex items-center gap-1">
+                                                                <p className="text-[10px] text-sky-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                                                                     <Fingerprint size={10} /> Block Hash (SHA-256)
                                                                 </p>
                                                                 <p className="text-xs font-mono text-white break-all leading-relaxed">
@@ -380,10 +380,10 @@ export const LedgerExplorerPage: React.FC = () => {
                                                         </div>
 
                                                         {/* Hash Composition Formula */}
-                                                        <div className="bg-gradient-to-r from-teal-900/20 to-transparent rounded-xl p-4 border border-teal-500/10">
-                                                            <p className="text-[10px] text-teal-400 uppercase tracking-wider mb-2">Hash Computed From</p>
+                                                        <div className="bg-gradient-to-r from-sky-900/20 to-transparent rounded-xl p-4 border border-sky-500/10">
+                                                            <p className="text-[10px] text-sky-400 uppercase tracking-wider mb-2">Hash Computed From</p>
                                                             <p className="text-xs font-mono text-slate-300">
-                                                                <span className="text-teal-400">SHA256</span>(
+                                                                <span className="text-sky-400">SHA256</span>(
                                                                 <span className="text-amber-400">{block.index}</span> +
                                                                 <span className="text-violet-400">{block.previousHash.slice(0, 8)}...</span> +
                                                                 <span className="text-cyan-400">{block.timestamp}</span> +

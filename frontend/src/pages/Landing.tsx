@@ -13,11 +13,11 @@ export const LandingPage: React.FC = () => {
 
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-[var(--primary)] text-white overflow-x-hidden selection:bg-teal-500 selection:text-white">
+      <div className="min-h-screen bg-[var(--primary)] text-white overflow-x-hidden selection:bg-sky-500 selection:text-white">
 
         {/* Animated Background */}
         <div className="fixed inset-0 pointer-events-none z-0">
-          <motion.div style={{ y: y1, x: -50 }} className="absolute top-0 left-0 w-[500px] h-[500px] bg-teal-600/20 rounded-full blur-[100px]" />
+          <motion.div style={{ y: y1, x: -50 }} className="absolute top-0 left-0 w-[500px] h-[500px] bg-sky-600/20 rounded-full blur-[100px]" />
           <motion.div style={{ y: y2, x: 50 }} className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px]" />
         </div>
 
@@ -25,12 +25,12 @@ export const LandingPage: React.FC = () => {
         <nav className="fixed top-0 w-full z-50 glass border-b border-white/5 backdrop-blur-md">
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center shadow-lg shadow-teal-500/20">
-                <Cpu className="text-white" size={20} />
+              <div className="w-10 h-10 rounded-xl overflow-hidden glass flex items-center justify-center shadow-[0_0_15px_rgba(14,165,233,0.3)]">
+                <img src="/logo.png" alt="MediChain" className="w-full h-full object-cover" />
               </div>
               <div>
-                <span className="font-bold text-xl tracking-tight">MediChain</span>
-                <span className="block text-[10px] text-teal-400 font-mono uppercase tracking-widest">SRM AI Council</span>
+                <span className="font-bold text-xl tracking-tight text-white leading-tight">MediChain</span>
+                <span className="block text-[10px] text-sky-400 font-mono uppercase tracking-widest">AI Health Council</span>
               </div>
             </div>
             <button onClick={() => navigate('/login')} className="px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 transition-all font-medium text-sm backdrop-blur-sm">
@@ -42,22 +42,22 @@ export const LandingPage: React.FC = () => {
         {/* Hero */}
         <section className="relative pt-40 pb-20 px-6 z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-teal-500/30 mb-8">
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-sky-500/30 mb-8">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
               <span className="text-xs font-mono text-teal-300">SYSTEM ONLINE • V5.0 PARALLEL CONSENSUS</span>
             </motion.div>
 
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/50">
               The Future of <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">AI Healthcare</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-400">AI Healthcare</span>
             </motion.h1>
 
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
               {PROBLEM_STATEMENT}
             </motion.p>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="flex justify-center space-x-6">
-              <button onClick={() => navigate('/login')} className="group relative px-8 py-4 bg-teal-500 rounded-full font-bold text-lg overflow-hidden">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.8 }} className="flex justify-center space-x-6">
+              <button onClick={() => navigate('/login')} className="group relative px-8 py-4 bg-sky-500 rounded-full font-bold text-lg overflow-hidden shadow-[0_0_30px_rgba(14,165,233,0.4)] hover:shadow-[0_0_50px_rgba(14,165,233,0.6)] transition-shadow">
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative flex items-center space-x-2">
                   <span>Initialize AI</span>
@@ -77,10 +77,10 @@ export const LandingPage: React.FC = () => {
               <p className="text-slate-400 max-w-md">Gemini → OpenRouter → Ollama → Fallback. Zero-downtime AI with cross-verification against 254k+ verified Indian medicines for maximum accuracy.</p>
             </motion.div>
 
-            <motion.div whileHover={{ y: -5 }} className="glass-card p-8 rounded-3xl relative overflow-hidden group bg-gradient-to-br from-teal-900/40 to-black/40">
+            <motion.div whileHover={{ y: -5 }} className="glass-card p-8 rounded-3xl relative overflow-hidden group bg-gradient-to-br from-sky-900/40 to-black/40">
               <h3 className="text-2xl font-bold mb-4">Blockchain Security</h3>
               <p className="text-slate-400 text-sm mb-4">SHA-256 hash chain + AES-256-GCM encryption. Every consultation is blockchain-verified.</p>
-              <div className="font-mono text-[10px] text-teal-400 break-all opacity-50">0x71c480df92d6e35f0ac756209b023f034731...</div>
+              <div className="font-mono text-[10px] text-sky-400 break-all opacity-50">0x71c480df92d6e35f0ac756209b023f034731...</div>
             </motion.div>
 
             <motion.div whileHover={{ y: -5 }} className="glass-card p-8 rounded-3xl md:col-span-3 flex flex-col md:flex-row items-center justify-between">
@@ -124,8 +124,8 @@ export const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {OBJECTIVES.map((obj, i) => (
               <motion.div key={i} initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-start gap-3 p-5 rounded-2xl glass-card">
-                <div className="w-8 h-8 rounded-lg bg-teal-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <ShieldCheck size={16} className="text-teal-400" />
+                <div className="w-8 h-8 rounded-lg bg-sky-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <ShieldCheck size={16} className="text-sky-400" />
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed">{obj}</p>
               </motion.div>
@@ -158,12 +158,12 @@ export const LandingPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center">
-                    <Cpu size={20} className="text-white" />
+                  <div className="w-10 h-10 rounded-xl overflow-hidden glass flex items-center justify-center">
+                    <img src="/logo.png" alt="MediChain" className="w-full h-full object-cover grayscale opacity-70" />
                   </div>
                   <div>
-                    <span className="font-bold text-lg">MediChain SRM</span>
-                    <span className="block text-[10px] text-teal-400 font-mono uppercase">AI Health Council</span>
+                    <span className="font-bold text-lg text-white">MediChain</span>
+                    <span className="block text-[10px] text-sky-400 font-mono uppercase">AI Health Council</span>
                   </div>
                 </div>
                 <p className="text-slate-500 text-sm">{TEAM_INFO.tagline}</p>
@@ -194,7 +194,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             <div className="mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-slate-600 text-xs">© {new Date().getFullYear()} MediChain SRM — AI Health Council</p>
+              <p className="text-slate-600 text-xs">© {new Date().getFullYear()} MediChain — AI Health Council</p>
               <div className="flex items-center gap-4 text-xs text-slate-600">
                 <span className="flex items-center gap-1"><Shield size={10} /> Blockchain Verified</span>
                 <span>•</span>

@@ -119,7 +119,7 @@ export const ReportPage: React.FC<ReportProps> = ({ user }) => {
 
         {/* Header */}
         <div className="relative rounded-3xl overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-indigo-600/10 to-cyan-600/20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-indigo-600/10 to-blue-600/20" />
           <div className="relative p-8">
             <div className="flex items-center gap-3 mb-2">
               <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25">
@@ -345,7 +345,7 @@ export const ReportPage: React.FC<ReportProps> = ({ user }) => {
 
             {/* Security badge for completed/running */}
             <div className="flex items-center gap-2 text-xs text-slate-600 font-mono pt-4">
-              <ShieldCheck size={12} className="text-teal-500" />
+              <ShieldCheck size={12} className="text-sky-500" />
               Report analysis end-to-end encrypted • Background processing active
             </div>
           </motion.div>

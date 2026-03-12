@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const SRM_LOGO = (
+export const LOGO_ICON = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-accent">
     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
   </svg>
@@ -17,7 +17,7 @@ export const FEATURES = [
     title: "Hash Ledger Security",
     desc: "Blockchain-inspired tamper-evident hash chain with AES-256-GCM encryption + SHA-256 hashing for prototype-level data integrity.",
     icon: "🔒",
-    gradient: "from-teal-500 to-cyan-600"
+    gradient: "from-sky-500 to-blue-600"
   },
   {
     title: "Indian Medical Database",
@@ -80,7 +80,7 @@ export const HOW_IT_WORKS = [
 ];
 
 export const TEAM_INFO = {
-  university: "SRM University",
+  university: "Medical AI Research",
   department: "Computer Science & Engineering",
-  tagline: "Built by students, powered by AI, secured by hash-ledger protocol"
+  tagline: "Built for patients, powered by AI, secured by hash-ledger protocol"
 };
