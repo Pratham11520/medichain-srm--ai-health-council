@@ -1,0 +1,8 @@
+/*
+Copyright (c) 2026 Pratham Rajesh Nagpal
+
+All Rights Reserved.
+Unauthorized copying, modification, redistribution,
+or commercial use of this file is prohibited without
+prior written permission.
+*/
